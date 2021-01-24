@@ -23,46 +23,46 @@ var app = new function() {
 
   this.Add = function () {
     el = document.getElementById('add-todo');
-    // Get the value
+    
     var task = el.value;
 
     if (task) {
-      // Add the new value
+     
       this.tasks.push(task.trim());
-      // Reset input value
+     
       el.value = '';
-      // Dislay the new list
+     
       this.FetchAll();
     }
   };
 
   this.Edit = function (item) {
     var el = document.getElementById('edit-todo');
-    // Display value in the field
+    
     el.value = this.tasks[item];
-    // Display fields
+  
     document.getElementById('edit-box').style.display = 'block';
     self = this;
 
     document.getElementById('save-edit').onsubmit = function() {
-      // Get value
+     
       var task = el.value;
 
       if (task) {
-        // Edit value
+      
         self.tasks.splice(item, 1, task.trim());
-        // Display the new list
+        
         self.FetchAll();
-        // Hide fields
+        
         CloseInput();
       }
     }
   };
 
   this.Delete = function (item) {
-    // Delete the current row
+    
     this.tasks.splice(item, 1);
-    // Display the new list
+   
     this.FetchAll();
   };
 
